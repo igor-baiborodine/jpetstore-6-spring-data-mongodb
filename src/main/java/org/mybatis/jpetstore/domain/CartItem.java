@@ -16,45 +16,29 @@
 
 package org.mybatis.jpetstore.domain;
 
-import java.io.Serializable;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+
+import com.google.common.base.MoreObjects;
+
 import java.math.BigDecimal;
 
 /**
  * @author Eduardo Macarron
- *
+ * @author Igor Baiborodine
  */
-public class CartItem implements Serializable {
- 
-  private static final long serialVersionUID = 6620528781626504362L;
+@Getter
+public class CartItem {
 
-  private Item item;
-  private int quantity;
-  private boolean inStock;
-  private BigDecimal total;
-
-  public boolean isInStock() {
-    return inStock;
-  }
-
-  public void setInStock(boolean inStock) {
-    this.inStock = inStock;
-  }
-
-  public BigDecimal getTotal() {
-    return total;
-  }
-
-  public Item getItem() {
-    return item;
-  }
+  @NonNull  private Item item;
+  @NonNull  private Integer quantity;
+  @Setter   private boolean inStock;
+  @NonNull  private BigDecimal total;
 
   public void setItem(Item item) {
     this.item = item;
     calculateTotal();
-  }
-
-  public int getQuantity() {
-    return quantity;
   }
 
   public void setQuantity(int quantity) {
@@ -73,6 +57,16 @@ public class CartItem implements Serializable {
     } else {
       total = null;
     }
+  }
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+        .add("item", item)
+        .add("quantity", quantity)
+        .add("inStock", inStock)
+        .add("total", total)
+        .toString();
   }
 
 }

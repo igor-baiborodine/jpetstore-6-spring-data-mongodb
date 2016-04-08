@@ -16,37 +16,26 @@
 
 package org.mybatis.jpetstore.domain;
 
-import java.io.Serializable;
+import lombok.Getter;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
+
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 /**
  * @author Eduardo Macarron
- *
+ * @author Igor Baiborodine
  */
-public class Cart implements Serializable {
+@Getter
+public class Cart {
 
-  private static final long serialVersionUID = 8329559983943337176L;
-  
-  private final Map<String, CartItem> itemMap = Collections.synchronizedMap(new HashMap<String, CartItem>());
-  private final List<CartItem> itemList = new ArrayList<CartItem>();
-
-  public Iterator<CartItem> getCartItems() {
-    return itemList.iterator();
-  }
-
-  public List<CartItem> getCartItemList() {
-    return itemList;
-  }
-
-  public int getNumberOfItems() {
-    return itemList.size();
-  }
+  private final Map<String, CartItem> itemMap = Collections.synchronizedMap(newHashMap());
+  private final List<CartItem> itemList = newArrayList();
 
   public Iterator<CartItem> getAllCartItems() {
     return itemList.iterator();
@@ -57,7 +46,8 @@ public class Cart implements Serializable {
   }
 
   public void addItem(Item item, boolean isInStock) {
-    CartItem cartItem = (CartItem) itemMap.get(item.getItemId());
+
+    CartItem cartItem = itemMap.get(item.getItemId());
     if (cartItem == null) {
       cartItem = new CartItem();
       cartItem.setItem(item);
@@ -70,7 +60,8 @@ public class Cart implements Serializable {
   }
 
   public Item removeItemById(String itemId) {
-    CartItem cartItem = (CartItem) itemMap.remove(itemId);
+
+    CartItem cartItem = itemMap.remove(itemId);
     if (cartItem == null) {
       return null;
     } else {
@@ -80,26 +71,26 @@ public class Cart implements Serializable {
   }
 
   public void incrementQuantityByItemId(String itemId) {
-    CartItem cartItem = (CartItem) itemMap.get(itemId);
+    CartItem cartItem = itemMap.get(itemId);
     cartItem.incrementQuantity();
   }
 
   public void setQuantityByItemId(String itemId, int quantity) {
-    CartItem cartItem = (CartItem) itemMap.get(itemId);
+    CartItem cartItem = itemMap.get(itemId);
     cartItem.setQuantity(quantity);
   }
 
   public BigDecimal getSubTotal() {
-    BigDecimal subTotal = new BigDecimal("0");
-    Iterator<CartItem> items = getAllCartItems();
-    while (items.hasNext()) {
-      CartItem cartItem = (CartItem) items.next();
+
+    final BigDecimal[] subTotal = {new BigDecimal("0")};
+    getAllCartItems().forEachRemaining(cartItem -> {
       Item item = cartItem.getItem();
       BigDecimal listPrice = item.getListPrice();
       BigDecimal quantity = new BigDecimal(String.valueOf(cartItem.getQuantity()));
-      subTotal = subTotal.add(listPrice.multiply(quantity));
-    }
-    return subTotal;
+      subTotal[0] = subTotal[0].add(listPrice.multiply(quantity));
+    });
+
+    return subTotal[0];
   }
 
 }

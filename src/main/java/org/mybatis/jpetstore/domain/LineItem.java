@@ -16,96 +16,76 @@
 
 package org.mybatis.jpetstore.domain;
 
-import java.io.Serializable;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+
 import java.math.BigDecimal;
 
 /**
  * @author Eduardo Macarron
- *
+ * @author Igor Baiborodine
  */
-public class LineItem implements Serializable {
+@Getter @Setter @Builder
+public class LineItem {
 
-  private static final long serialVersionUID = 6804536240033522156L;
+  @NonNull  private Integer orderId;
+  @NonNull  private Integer lineNumber;
+  @NonNull  private Item item;
 
-  private int orderId;
-  private int lineNumber;
-  private int quantity;
-  private String itemId;
+  private Integer quantity;
   private BigDecimal unitPrice;
-  private Item item;
   private BigDecimal total;
 
-  public LineItem() {
-  }
-
-  public LineItem(int lineNumber, CartItem cartItem) {
+  public LineItem(Integer lineNumber, CartItem cartItem) {
     this.lineNumber = lineNumber;
     this.quantity = cartItem.getQuantity();
-    this.itemId = cartItem.getItem().getItemId();
-    this.unitPrice = cartItem.getItem().getListPrice();
-    this.item = cartItem.getItem();
-  }
-
-  public int getOrderId() {
-    return orderId;
-  }
-
-  public void setOrderId(int orderId) {
-    this.orderId = orderId;
-  }
-
-  public int getLineNumber() {
-    return lineNumber;
-  }
-
-  public void setLineNumber(int lineNumber) {
-    this.lineNumber = lineNumber;
-  }
-
-  public String getItemId() {
-    return itemId;
-  }
-
-  public void setItemId(String itemId) {
-    this.itemId = itemId;
-  }
-
-  public BigDecimal getUnitPrice() {
-    return unitPrice;
-  }
-
-  public void setUnitPrice(BigDecimal unitprice) {
-    this.unitPrice = unitprice;
-  }
-
-  public BigDecimal getTotal() {
-    return total;
-  }
-
-  public Item getItem() {
-    return item;
+    setItem(cartItem.getItem());
   }
 
   public void setItem(Item item) {
     this.item = item;
-    calculateTotal();
-  }
-
-  public int getQuantity() {
-    return quantity;
-  }
-
-  public void setQuantity(int quantity) {
-    this.quantity = quantity;
+    this.unitPrice = item.getListPrice();
     calculateTotal();
   }
 
   private void calculateTotal() {
-    if (item != null && item.getListPrice() != null) {
-      total = item.getListPrice().multiply(new BigDecimal(quantity));
-    } else {
+
+    if (quantity == null || unitPrice == null) {
       total = null;
+    } else {
+      total = unitPrice.multiply(new BigDecimal(quantity));
     }
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    LineItem lineItem = (LineItem) o;
+    return Objects.equal(orderId, lineItem.orderId) &&
+        Objects.equal(lineNumber, lineItem.lineNumber);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(orderId, lineNumber);
+  }
+
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+        .add("orderId", orderId)
+        .add("lineNumber", lineNumber)
+        .add("itemId", item.getItemId())
+        .add("quantity", quantity)
+        .add("unitPrice", unitPrice)
+        .add("total", total)
+        .toString();
   }
 
 }

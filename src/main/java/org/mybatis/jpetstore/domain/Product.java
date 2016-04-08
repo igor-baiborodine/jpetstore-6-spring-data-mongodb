@@ -16,55 +16,53 @@
 
 package org.mybatis.jpetstore.domain;
 
-import java.io.Serializable;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author Eduardo Macarron
- *
+ * @author Igor Baiborodine
  */
-public class Product implements Serializable {
+@Getter @Setter @Builder
+@NoArgsConstructor
+@Document
+public class Product {
 
-  private static final long serialVersionUID = -7492639752670189553L;
-  
-  private String productId;
-  private String categoryId;
-  private String name;
-  private String description;
+  @Id       private String productId;
+  @NonNull  private String categoryId;
+  @NonNull  private String name;
+  @NonNull  private String description;
 
-  public String getProductId() {
-    return productId;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Product product = (Product) o;
+    return Objects.equal(productId, product.productId);
   }
 
-  public void setProductId(String productId) {
-    this.productId = productId.trim();
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(productId);
   }
 
-  public String getCategoryId() {
-    return categoryId;
-  }
-
-  public void setCategoryId(String categoryId) {
-    this.categoryId = categoryId;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
+  @Override
   public String toString() {
-    return getName();
+    return MoreObjects.toStringHelper(this)
+        .add("productId", productId)
+        .add("categoryId", categoryId)
+        .add("name", name)
+        .add("description", description)
+        .toString();
   }
 
 }

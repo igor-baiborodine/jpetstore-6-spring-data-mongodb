@@ -16,41 +16,50 @@
 
 package org.mybatis.jpetstore.domain;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.math.BigInteger;
 
 /**
  * @author Eduardo Macarron
- *
+ * @author Igor Baiborodine
  */
-public class Sequence implements Serializable {
+@Getter @Setter
+@AllArgsConstructor
+@Document
+public class Sequence {
 
-  private static final long serialVersionUID = 8278780133180137281L;
- 
-  private String name;
-  private int nextId;
+  @Id       private String name;
+  @NonNull  private BigInteger nextId;
 
-  public Sequence() {
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Sequence sequence = (Sequence) o;
+    return Objects.equal(name, sequence.name);
   }
 
-  public Sequence(String name, int nextId) {
-    this.name = name;
-    this.nextId = nextId;
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(name);
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public int getNextId() {
-    return nextId;
-  }
-
-  public void setNextId(int nextId) {
-    this.nextId = nextId;
+  @Override
+  public String toString() {
+    return MoreObjects.toStringHelper(this)
+        .add("name", name)
+        .add("nextId", nextId)
+        .toString();
   }
 
 }

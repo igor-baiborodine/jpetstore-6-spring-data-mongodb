@@ -16,46 +16,50 @@
 
 package org.mybatis.jpetstore.domain;
 
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
+
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author Eduardo Macarron
- *
+ * @author Igor Baiborodine
  */
-public class Category implements Serializable {
+@Getter @Setter
+@AllArgsConstructor
+@Document
+public class Category {
 
-  private static final long serialVersionUID = 3992469837058393712L;
+  @Id       private String categoryId;
+  @NonNull  private String name;
+  @NonNull  private String description;
 
-  private String categoryId;
-  private String name;
-  private String description;
-
-  public String getCategoryId() {
-    return categoryId;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    Category category = (Category) o;
+    return Objects.equal(categoryId, category.categoryId);
   }
 
-  public void setCategoryId(String categoryId) {
-    this.categoryId = categoryId.trim();
+  @Override
+  public int hashCode() {
+    return Objects.hashCode(categoryId);
   }
 
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
+  @Override
   public String toString() {
-    return getCategoryId();
+    return MoreObjects.toStringHelper(this)
+        .add("categoryId", categoryId)
+        .add("name", name)
+        .add("description", description)
+        .toString();
   }
 
 }
