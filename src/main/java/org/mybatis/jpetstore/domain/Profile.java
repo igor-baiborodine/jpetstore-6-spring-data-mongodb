@@ -1,5 +1,6 @@
 package org.mybatis.jpetstore.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,18 +13,14 @@ import com.google.common.base.MoreObjects;
  * @author Igor Baiborodine
  */
 @Getter @Setter @Builder
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 public class Profile {
 
   private String favouriteCategoryId;
-  private String languagePreference;
+  @NonNull private String languagePreference;
   private boolean listOption;
   private boolean bannerOption;
   private String bannerName;
-
-  public Profile(@NonNull String languagePreference) {
-    this.languagePreference = languagePreference;
-  }
 
   @Override
   public String toString() {

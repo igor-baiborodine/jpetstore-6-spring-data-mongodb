@@ -16,6 +16,7 @@
 
 package org.mybatis.jpetstore.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @author Igor Baiborodine
  */
 @Getter @Setter @Builder
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Document
 public class Product {
 

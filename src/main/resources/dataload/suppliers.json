@@ -1,0 +1,32 @@
+[
+  {
+    "_class": "org.mybatis.jpetstore.domain.Supplier",
+    "supplierId": 1,
+    "name": "ABC Pets",
+    "status": "AC",
+    "address": {
+      "address1": "600 Avon Way",
+      "address2": null,
+      "city": "Los Angeles",
+      "state": "CA",
+      "zip": "94024",
+      "country": "USA",
+      "phone": "212-947-0797"
+    }
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Supplier",
+    "supplierId": 2,
+    "name": "Acme Pets",
+    "status": "AC",
+    "address": {
+      "address1": "700 Abalone Way",
+      "address2": null,
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94024",
+      "country": "USA",
+      "phone": "415-947-0797"
+    }
+  }
+]

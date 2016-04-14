@@ -16,6 +16,7 @@
 
 package org.mybatis.jpetstore.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -40,7 +41,7 @@ import java.util.List;
  * @author Igor Baiborodine
  */
 @Getter @Setter @Builder
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Document
 public class Order {
 

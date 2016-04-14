@@ -16,86 +16,66 @@
 
 package org.mybatis.jpetstore.service;
 
+import static com.google.common.base.Preconditions.checkNotNull;
+import static java.lang.String.format;
+
 import org.mybatis.jpetstore.domain.Item;
-import org.mybatis.jpetstore.domain.LineItem;
 import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.domain.Sequence;
-import org.mybatis.jpetstore.persistence.ItemMapper;
-import org.mybatis.jpetstore.persistence.LineItemMapper;
-import org.mybatis.jpetstore.persistence.OrderMapper;
-import org.mybatis.jpetstore.persistence.SequenceMapper;
+import org.mybatis.jpetstore.repository.ItemRepository;
+import org.mybatis.jpetstore.repository.OrderRepository;
+import org.mybatis.jpetstore.repository.SequenceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.HashMap;
+import java.math.BigInteger;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Eduardo Macarron
- *
+ * @author Igor Baiborodine
  */
 public class OrderService {
 
-  @Autowired
-  private ItemMapper itemMapper;
-  @Autowired
-  private OrderMapper orderMapper;
-  @Autowired
-  private SequenceMapper sequenceMapper;
-  @Autowired
-  private LineItemMapper lineItemMapper;
+  @Autowired private ItemRepository itemRepository;
+  @Autowired private OrderRepository orderRepository;
+  @Autowired private SequenceRepository sequenceRepository;
 
-  @Transactional
+  //@Transactional - no longer transactional
   public void insertOrder(Order order) {
-    order.setOrderId(getNextId("ordernum"));
-    for (int i = 0; i < order.getLineItems().size(); i++) {
-      LineItem lineItem = order.getLineItems().get(i);
-      String itemId = lineItem.getItemId();
-      Integer increment = new Integer(lineItem.getQuantity());
-      Map<String, Object> param = new HashMap<>(2);
-      param.put("itemId", itemId);
-      param.put("increment", increment);
-      itemMapper.updateInventoryQuantity(param);
-    }
 
-    orderMapper.insertOrder(order);
-    orderMapper.insertOrderStatus(order);
-    for (int i = 0; i < order.getLineItems().size(); i++) {
-      LineItem lineItem = order.getLineItems().get(i);
-      lineItem.setOrderId(order.getOrderId());
-      lineItemMapper.insertLineItem(lineItem);
-    }
+    order.getLineItems().forEach(lineItem -> {
+      Item item = itemRepository.findOne(lineItem.getItemId());
+      checkNotNull(item, format("Cannot fetch item with id[%s]", lineItem.getItemId()));
+      item.setQuantity(item.getQuantity() - lineItem.getQuantity());
+      itemRepository.save(item);
+    });
+    order.setOrderId(getNextId("ordernum"));
+    orderRepository.save(order);
   }
 
-  @Transactional
-  public Order getOrder(int orderId) {
-    Order order = orderMapper.getOrder(orderId);
-    order.setLineItems(lineItemMapper.getLineItemsByOrderId(orderId));
+  // @Transactional - no longer transactional
+  public Order getOrder(BigInteger orderId) {
 
-    for (int i = 0; i < order.getLineItems().size(); i++) {
-      LineItem lineItem = order.getLineItems().get(i);
-      Item item = itemMapper.getItem(lineItem.getItemId());
-      item.setQuantity(itemMapper.getInventoryQuantity(lineItem.getItemId()));
-      lineItem.setItem(item);
-    }
-
+    Order order = orderRepository.findOne(orderId);
+    // TODO: check if we need to reset item's stock quantity with actual value
+    order.getLineItems().forEach(lineItem -> {
+      Item item = itemRepository.findOne(lineItem.getItemId());
+      lineItem.getItem().setQuantity(item.getQuantity());
+    });
     return order;
   }
 
   public List<Order> getOrdersByUsername(String username) {
-    return orderMapper.getOrdersByUsername(username);
+    return orderRepository.findByUsername(username);
   }
 
-  public int getNextId(String name) {
-    Sequence sequence = new Sequence(name, -1);
-    sequence = sequenceMapper.getSequence(sequence);
-    if (sequence == null) {
-      throw new RuntimeException("Error: A null sequence was returned from the database (could not get next " + name
-          + " sequence).");
-    }
-    Sequence parameterObject = new Sequence(name, sequence.getNextId() + 1);
-    sequenceMapper.updateSequence(parameterObject);
+  public BigInteger getNextId(String name) {
+
+    Sequence sequence = sequenceRepository.findOne(name);
+    checkNotNull(sequence, format("Cannot fetch sequence with name[%s]", name));
+
+    sequence.setNextId(sequence.getNextId().add(new BigInteger("1")));
+    sequenceRepository.save(sequence);
     return sequence.getNextId();
   }
 

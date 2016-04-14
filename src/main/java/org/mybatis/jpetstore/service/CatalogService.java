@@ -16,12 +16,14 @@
 
 package org.mybatis.jpetstore.service;
 
+import static com.google.common.collect.Lists.newArrayList;
+
 import org.mybatis.jpetstore.domain.Category;
 import org.mybatis.jpetstore.domain.Item;
 import org.mybatis.jpetstore.domain.Product;
-import org.mybatis.jpetstore.persistence.CategoryMapper;
-import org.mybatis.jpetstore.persistence.ItemMapper;
-import org.mybatis.jpetstore.persistence.ProductMapper;
+import org.mybatis.jpetstore.repository.CategoryRepository;
+import org.mybatis.jpetstore.repository.ItemRepository;
+import org.mybatis.jpetstore.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -29,49 +31,51 @@ import java.util.List;
 
 /**
  * @author Eduardo Macarron
+ * @author Igor Baiborodine
  */
 public class CatalogService {
 
-  @Autowired
-  private CategoryMapper categoryMapper;
-  @Autowired
-  private ItemMapper itemMapper;
-  @Autowired
-  private ProductMapper productMapper;
+  @Autowired private CategoryRepository categoryRepository;
+  @Autowired private ItemRepository itemRepository;
+  @Autowired private ProductRepository productRepository;
 
   public List<Category> getCategoryList() {
-    return categoryMapper.getCategoryList();
+    return newArrayList(categoryRepository.findAll());
   }
 
   public Category getCategory(String categoryId) {
-    return categoryMapper.getCategory(categoryId);
+    return categoryRepository.findOne(categoryId);
   }
 
   public Product getProduct(String productId) {
-    return productMapper.getProduct(productId);
+    return productRepository.findOne(productId);
   }
 
   public List<Product> getProductListByCategory(String categoryId) {
-    return productMapper.getProductListByCategory(categoryId);
+    return productRepository.findByCategoryId(categoryId);
   }
 
+  // TODO: re-implement with full-text search
   public List<Product> searchProductList(String keywords) {
     List<Product> products = new ArrayList<>();
     for (String keyword : keywords.split("\\s+")) {
-      products.addAll(productMapper.searchProductList("%" + keyword.toLowerCase() + "%"));
+      // TODO: fix me
+      //products.addAll(productRepository.searchProductList("%" + keyword.toLowerCase() + "%"));
     }
     return products;
   }
 
-  public List<Item> getItemListByProduct(String productId) {
-    return itemMapper.getItemListByProduct(productId);
+  public List<Item> getItemListByProduct(Product product) {
+    return newArrayList(itemRepository.findByProduct(product));
   }
 
   public Item getItem(String itemId) {
-    return itemMapper.getItem(itemId);
+    return itemRepository.findOne(itemId);
   }
 
   public boolean isItemInStock(String itemId) {
-    return itemMapper.getInventoryQuantity(itemId) > 0;
+    Item item = itemRepository.findOne(itemId);
+    return item != null && item.getQuantity() > 0;
   }
+
 }

@@ -16,13 +16,12 @@
 
 package org.mybatis.jpetstore.domain;
 
-import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
 import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
 
 import java.math.BigDecimal;
 
@@ -30,10 +29,10 @@ import java.math.BigDecimal;
  * @author Eduardo Macarron
  * @author Igor Baiborodine
  */
-@Getter @Setter @Builder
+@Getter @Setter
+@NoArgsConstructor
 public class LineItem {
 
-  @NonNull  private Integer orderId;
   @NonNull  private Integer lineNumber;
   @NonNull  private Item item;
 
@@ -50,36 +49,17 @@ public class LineItem {
   public void setItem(Item item) {
     this.item = item;
     this.unitPrice = item.getListPrice();
-    calculateTotal();
+    this.total = (quantity == null || unitPrice == null)
+        ? null : unitPrice.multiply(new BigDecimal(quantity));
   }
 
-  private void calculateTotal() {
-
-    if (quantity == null || unitPrice == null) {
-      total = null;
-    } else {
-      total = unitPrice.multiply(new BigDecimal(quantity));
-    }
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    LineItem lineItem = (LineItem) o;
-    return Objects.equal(orderId, lineItem.orderId) &&
-        Objects.equal(lineNumber, lineItem.lineNumber);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hashCode(orderId, lineNumber);
+  public String getItemId() {
+    return item.getItemId();
   }
 
   @Override
   public String toString() {
     return MoreObjects.toStringHelper(this)
-        .add("orderId", orderId)
         .add("lineNumber", lineNumber)
         .add("itemId", item.getItemId())
         .add("quantity", quantity)

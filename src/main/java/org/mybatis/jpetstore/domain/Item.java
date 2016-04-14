@@ -16,6 +16,7 @@
 
 package org.mybatis.jpetstore.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,19 +30,20 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 /**
  * @author Eduardo Macarron
  * @author Igor Baiborodine
  */
 @Getter @Setter @Builder
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 @Document
 public class Item {
 
   @Id       private String itemId;
   @NonNull  private Product product;
-  @NonNull  private Integer supplierId;
+  @NonNull  private BigInteger supplierId;
   @NonNull  private BigDecimal listPrice;
   @NonNull  private BigDecimal unitCost;
   @NonNull  private String status;

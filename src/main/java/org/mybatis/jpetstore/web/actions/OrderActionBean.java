@@ -56,19 +56,11 @@ public class OrderActionBean extends AbstractActionBean {
   private List<Order> orderList;
 
   static {
-    List<String> cardList = new ArrayList<String>();
+    List<String> cardList = new ArrayList<>();
     cardList.add("Visa");
     cardList.add("MasterCard");
     cardList.add("American Express");
     CARD_TYPE_LIST = Collections.unmodifiableList(cardList);
-  }
-
-  public int getOrderId() {
-    return order.getOrderId();
-  }
-
-  public void setOrderId(int orderId) {
-    order.setOrderId(orderId);
   }
 
   public Order getOrder() {

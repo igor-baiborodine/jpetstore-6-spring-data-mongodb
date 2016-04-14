@@ -1,5 +1,6 @@
 package org.mybatis.jpetstore.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +13,7 @@ import com.google.common.base.MoreObjects;
  * @author Igor Baiborodine
  */
 @Getter @Setter @Builder
-@NoArgsConstructor
+@NoArgsConstructor @AllArgsConstructor
 public class Address {
 
   @NonNull  private String address1;

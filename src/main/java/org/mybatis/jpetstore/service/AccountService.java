@@ -17,43 +17,31 @@
 package org.mybatis.jpetstore.service;
 
 import org.mybatis.jpetstore.domain.Account;
-import org.mybatis.jpetstore.persistence.AccountMapper;
+import org.mybatis.jpetstore.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Eduardo Macarron
- *
+ * @author Igor Baiborodine
  */
 public class AccountService {
 
-  @Autowired
-  private AccountMapper accountMapper;
+  @Autowired  private AccountRepository accountRepository;
 
   public Account getAccount(String username) {
-    return accountMapper.getAccountByUsername(username);
+    return accountRepository.findOne(username);
   }
 
   public Account getAccount(String username, String password) {
-    return accountMapper.getAccountByUsernameAndPassword(username, password);
+    return accountRepository.findByUsernameAndPassword(username, password);
   }
 
-  @Transactional
   public void insertAccount(Account account) {
-    accountMapper.insertAccount(account);
-    accountMapper.insertProfile(account);
-    accountMapper.insertSignon(account);
+    accountRepository.save(account);
   }
 
-  @Transactional
   public void updateAccount(Account account) {
-    accountMapper.updateAccount(account);
-    accountMapper.updateProfile(account);
-
-    if (account.getPassword() != null && account.getPassword().length() > 0) {
-      accountMapper.updateSignon(account);
-    }
+    accountRepository.save(account);
   }
 
 }

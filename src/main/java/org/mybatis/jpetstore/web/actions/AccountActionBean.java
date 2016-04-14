@@ -56,17 +56,17 @@ public class AccountActionBean extends AbstractActionBean {
   @SpringBean
   private transient CatalogService catalogService;
 
-  private Account account = new Account();
+  private Account account = Account.builder().build();
   private List<Product> myList;
   private boolean authenticated;
 
   static {
-    List<String> langList = new ArrayList<String>();
+    List<String> langList = new ArrayList<>();
     langList.add("english");
     langList.add("japanese");
     LANGUAGE_LIST = Collections.unmodifiableList(langList);
 
-    List<String> catList = new ArrayList<String>();
+    List<String> catList = new ArrayList<>();
     catList.add("FISH");
     catList.add("DOGS");
     catList.add("REPTILES");
@@ -120,7 +120,8 @@ public class AccountActionBean extends AbstractActionBean {
   public Resolution newAccount() {
     accountService.insertAccount(account);
     account = accountService.getAccount(account.getUsername());
-    myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
+    // TODO: fix me
+    //myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
     authenticated = true;
     return new RedirectResolution(CatalogActionBean.class);
   }
@@ -132,7 +133,8 @@ public class AccountActionBean extends AbstractActionBean {
   public Resolution editAccount() {
     accountService.updateAccount(account);
     account = accountService.getAccount(account.getUsername());
-    myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
+    // TODO: fix me
+    // myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
     return new RedirectResolution(CatalogActionBean.class);
   }
   
@@ -152,7 +154,8 @@ public class AccountActionBean extends AbstractActionBean {
       return new ForwardResolution(SIGNON);
     } else {
       account.setPassword(null);
-      myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
+      // TODO: fix me
+      //myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
       authenticated = true;
       HttpSession s = context.getRequest().getSession();
       // this bean is already registered as /actions/Account.action
@@ -172,7 +175,7 @@ public class AccountActionBean extends AbstractActionBean {
   }
 
   public void clear() {
-    account = new Account();
+    account = Account.builder().build();
     myList = null;
     authenticated = false;
   }
