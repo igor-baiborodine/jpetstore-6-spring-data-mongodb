@@ -55,6 +55,10 @@ public class Item {
   private String attribute4;
   private String attribute5;
 
+  public String getProductId() {
+    return (product != null) ? product.getProductId() : null;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;

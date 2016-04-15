@@ -1,0 +1,451 @@
+[
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-1",
+    "product": {
+      "productId": "FI-SW-01",
+      "categoryId": "FISH",
+      "name": "Angelfish",
+      "description": "<image src='../images/fish1.gif'>Salt Water fish from Australia"
+    },
+    "listPrice": "16.50",
+    "unitCost": "10.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Large"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-2",
+    "product": {
+      "productId": "FI-SW-01",
+      "categoryId": "FISH",
+      "name": "Angelfish",
+      "description": "<image src='../images/fish1.gif'>Salt Water fish from Australia"
+    },
+    "listPrice": "16.50",
+    "unitCost": "10.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Small"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-3",
+    "product": {
+      "productId": "FI-SW-02",
+      "categoryId": "FISH",
+      "name": "Tiger Shark",
+      "description": "<image src='../images/fish4.gif'>Salt Water fish from Australia"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Toothless"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-4",
+    "product": {
+      "productId": "FI-FW-01",
+      "categoryId": "FISH",
+      "name": "Koi",
+      "description": "<image src='../images/fish3.gif'>Fresh Water fish from Japan"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Spotted"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-5",
+    "product": {
+      "productId": "FI-FW-01",
+      "categoryId": "FISH",
+      "name": "Koi",
+      "description": "<image src='../images/fish3.gif'>Fresh Water fish from Japan"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Spotless"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-6",
+    "product": {
+      "productId": "K9-BD-01",
+      "categoryId": "DOGS",
+      "name": "Bulldog",
+      "description": "<image src='../images/dog2.gif'>Friendly dog from England"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Male Adult"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-7",
+    "product": {
+      "productId": "K9-BD-01",
+      "categoryId": "DOGS",
+      "name": "Bulldog",
+      "description": "<image src='../images/dog2.gif'>Friendly dog from England"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Female Puppy"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-8",
+    "product": {
+      "productId": "K9-PO-02",
+      "categoryId": "DOGS",
+      "name": "Poodle",
+      "description": "<image src='../images/dog6.gif'>Cute dog from France"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Male Puppy"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-9",
+    "product": {
+      "productId": "K9-DL-01",
+      "categoryId": "DOGS",
+      "name": "Dalmation",
+      "description": "<image src='../images/dog5.gif'>Great dog for a Fire Station"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Spotless Male Puppy"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-10",
+    "product": {
+      "productId": "K9-DL-01",
+      "categoryId": "DOGS",
+      "name": "Dalmation",
+      "description": "<image src='../images/dog5.gif'>Great dog for a Fire Station"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Spotted Adult Female"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-11",
+    "product": {
+      "productId": "RP-SN-01",
+      "categoryId": "REPTILES",
+      "name": "Rattlesnake",
+      "description": "<image src='../images/snake1.gif'>Doubles as a watch dog"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Venomless"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-12",
+    "product": {
+      "productId": "RP-SN-01",
+      "categoryId": "REPTILES",
+      "name": "Rattlesnake",
+      "description": "<image src='../images/snake1.gif'>Doubles as a watch dog"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Rattleless"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-13",
+    "product": {
+      "productId": "RP-LI-02",
+      "categoryId": "REPTILES",
+      "name": "Iguana",
+      "description": "<image src='../images/lizard1.gif'>Friendly green friend"
+    },
+    "listPrice": "18.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Green Adult"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-14",
+    "product": {
+      "_class": "FL-DSH-01",
+      "productId": "FL-DSH-01",
+      "categoryId": "CATS",
+      "name": "Manx",
+      "description": "<image src='../images/cat2.gif'>Great for reducing mouse populations"
+    },
+    "listPrice": "58.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Tailless"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-15",
+    "product": {
+      "productId": "FL-DSH-01",
+      "categoryId": "CATS",
+      "name": "Manx",
+      "description": "<image src='../images/cat2.gif'>Great for reducing mouse populations"
+    },
+    "listPrice": "23.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "With tail"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-16",
+    "product": {
+      "productId": "FL-DLH-02",
+      "categoryId": "CATS",
+      "name": "Persian",
+      "description": "<image src='../images/cat1.gif'>Friendly house cat, doubles as a princess"
+    },
+    "listPrice": "93.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Female"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-17",
+    "product": {
+      "productId": "FL-DLH-02",
+      "categoryId": "CATS",
+      "name": "Persian",
+      "description": "<image src='../images/cat1.gif'>Friendly house cat, doubles as a princess"
+    },
+    "listPrice": "93.50",
+    "unitCost": "12.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Male"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-18",
+    "product": {
+      "productId": "AV-CB-01",
+      "categoryId": "BIRDS",
+      "name": "Amazon Parrot",
+      "description": "<image src='../images/bird2.gif'>Great companion for up to 75 years"
+    },
+    "listPrice": "193.50",
+    "unitCost": "92.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Male"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-19",
+    "product": {
+      "productId": "AV-SB-02",
+      "categoryId": "BIRDS",
+      "name": "Finch",
+      "description": "<image src='../images/bird1.gif'>Great stress reliever"
+    },
+    "listPrice": "15.50",
+    "unitCost": "2.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Male"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-20",
+    "product": {
+      "productId": "FI-FW-02",
+      "categoryId": "FISH",
+      "name": "Goldfish",
+      "description": "<image src='../images/fish2.gif'>Fresh Water fish from China"
+    },
+    "listPrice": "5.50",
+    "unitCost": " 2.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Male"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-21",
+    "product": {
+      "productId": "FI-FW-02",
+      "categoryId": "FISH",
+      "name": "Goldfish",
+      "description": "<image src='../images/fish2.gif'>Fresh Water fish from China"
+    },
+    "listPrice": "5.29",
+    "unitCost": " 1.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Female"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-22",
+    "product": {
+      "productId": "K9-RT-02",
+      "categoryId": "DOGS",
+      "name": "Labrador Retriever",
+      "description": "<image src='../images/dog5.gif'>Great hunting dog"
+    },
+    "listPrice": "135.50",
+    "unitCost": " 100.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Male"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-23",
+    "product": {
+      "productId": "K9-RT-02",
+      "categoryId": "DOGS",
+      "name": "Labrador Retriever",
+      "description": "<image src='../images/dog5.gif'>Great hunting dog"
+    },
+    "listPrice": "145.49",
+    "unitCost": " 100.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Female"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-24",
+    "product": {
+      "productId": "K9-RT-02",
+      "categoryId": "DOGS",
+      "name": "Labrador Retriever",
+      "description": "<image src='../images/dog5.gif'>Great hunting dog"
+    },
+    "listPrice": "255.50",
+    "unitCost": " 92.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Male"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-25",
+    "product": {
+      "productId": "K9-RT-02",
+      "categoryId": "DOGS",
+      "name": "Labrador Retriever",
+      "description": "<image src='../images/dog5.gif'>Great hunting dog"
+    },
+    "listPrice": "325.29",
+    "unitCost": " 90.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Female"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-26",
+    "product": {
+      "productId": "K9-CW-01",
+      "categoryId": "DOGS",
+      "name": "Chihuahua",
+      "description": "<image src='../images/dog4.gif'>Great companion dog"
+    },
+    "listPrice": "125.50",
+    "unitCost": " 92.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Male"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-27",
+    "product": {
+      "productId": "K9-CW-01",
+      "categoryId": "DOGS",
+      "name": "Chihuahua",
+      "description": "<image src='../images/dog4.gif'>Great companion dog"
+    },
+    "listPrice": "155.29",
+    "unitCost": " 90.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Female"
+  },
+  {
+    "_class": "org.mybatis.jpetstore.domain.Item",
+    "itemId": "EST-28",
+    "product": {
+      "productId": "K9-RT-01",
+      "categoryId": "DOGS",
+      "name": "Golden Retriever",
+      "description": "<image src='../images/dog1.gif'>Great family dog"
+    },
+    "listPrice": "155.29",
+    "unitCost": " 90.00",
+    "supplierId": 1,
+    "status": "P",
+    "quantity": 1000,
+    "attribute1": "Adult Female"
+  }
+]

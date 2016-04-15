@@ -37,7 +37,7 @@ public class SupplierRepositoryPersistenceTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedSupplierWithSpecificCategoryId() {
+  public void findOne_repositoryPopulator_fetchedSupplierWithSpecificSupplierId() {
     // given
     //   repository was populated during the app init
     // when

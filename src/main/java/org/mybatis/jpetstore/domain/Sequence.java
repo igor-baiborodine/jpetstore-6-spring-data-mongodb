@@ -18,6 +18,7 @@ package org.mybatis.jpetstore.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
 
@@ -34,7 +35,7 @@ import java.math.BigInteger;
  * @author Igor Baiborodine
  */
 @Getter @Setter
-@AllArgsConstructor
+@AllArgsConstructor @NoArgsConstructor
 @Document
 public class Sequence {
 

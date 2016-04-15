@@ -1,0 +1,7 @@
+[
+  {
+    "_class": "org.mybatis.jpetstore.domain.Sequence",
+    "name": "order",
+    "nextId": 1000
+  }
+]

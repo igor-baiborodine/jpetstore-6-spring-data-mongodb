@@ -66,7 +66,7 @@ public class CatalogService {
   }
 
   public List<Item> getItemListByProduct(Product product) {
-    return newArrayList(itemRepository.findByProduct(product));
+    return itemRepository.findByProduct(product);
   }
 
   public Item getItem(String itemId) {
