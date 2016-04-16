@@ -40,7 +40,7 @@ public class ItemRepositoryPersistenceTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedItemWithSpecificItemId() {
+  public void findOne_repositoryPopulator_fetchedItemWithSpecifiedItemId() {
     // given
     //   repository was populated during the app init
     // when
@@ -62,7 +62,7 @@ public class ItemRepositoryPersistenceTest {
   }
 
   @Test
-  public void findByProduct_repositoryPopulator_fetchedItemsWithSpecificProduct() {
+  public void findByProduct_repositoryPopulator_fetchedItemsWithSpecifiedProduct() {
     // given
     //   repository was populated during the app init
     // when
@@ -72,6 +72,20 @@ public class ItemRepositoryPersistenceTest {
     // then
     assertThat(items.size(), is(2));
     items.forEach(item -> assertThat(item.getProductId(), is(productId)));
+  }
+
+  @Test
+  public void save_existingItem_itemQuantityUpdated() {
+    // given
+    //   repository was populated during the app init
+    // when
+    String itemId = "EST-2";
+    Item item = itemRepository.findOne(itemId);
+    item.setQuantity(item.getQuantity() - 1);
+    itemRepository.save(item);
+    Item updatedItem = itemRepository.findOne(itemId);
+    // then
+    assertThat(updatedItem.getQuantity(), is(item.getQuantity()));
   }
 
 }

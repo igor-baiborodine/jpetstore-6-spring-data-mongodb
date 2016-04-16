@@ -49,7 +49,7 @@ public class OrderService {
       item.setQuantity(item.getQuantity() - lineItem.getQuantity());
       itemRepository.save(item);
     });
-    order.setOrderId(getNextId("ordernum"));
+    order.setOrderId(getNextId("order"));
     orderRepository.save(order);
   }
 

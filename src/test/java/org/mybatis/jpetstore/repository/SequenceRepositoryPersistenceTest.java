@@ -33,7 +33,7 @@ public class SequenceRepositoryPersistenceTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedSequenceWithSpecificName() {
+  public void findOne_repositoryPopulator_fetchedSequenceWithSpecifiedName() {
     // given
     //   repository was populated during the app init
     // when

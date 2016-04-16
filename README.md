@@ -1,4 +1,4 @@
-[IN PROGRESS] jpetstore-6-spring-data-mongodb
+[IN PROGRESS] jpetstore-6-spring-data-mongodb [![Build Status](https://travis-ci.org/igor-baiborodine/jpetstore-6-spring-data-mongodb.svg?branch=master)](https://travis-ci.org/igor-baiborodine/jpetstore-6-spring-data-mongodb)
 ---------------------------
 
 #####This project is an exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/MongoDB using Spring Data MongoDB.#####

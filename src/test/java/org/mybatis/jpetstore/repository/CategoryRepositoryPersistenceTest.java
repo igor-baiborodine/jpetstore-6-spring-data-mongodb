@@ -38,7 +38,7 @@ public class CategoryRepositoryPersistenceTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedCategoryWithSpecificCategoryId() {
+  public void findOne_repositoryPopulator_fetchedCategoryWithSpecifiedCategoryId() {
     // given
     //   repository was populated during the app init
     // when

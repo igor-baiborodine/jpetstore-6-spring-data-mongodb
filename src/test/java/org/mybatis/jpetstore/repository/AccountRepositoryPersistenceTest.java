@@ -10,6 +10,9 @@ import org.junit.runner.RunWith;
 import org.mybatis.jpetstore.JPetStoreDemo6SpringBootApplication;
 import org.mybatis.jpetstore.domain.Account;
 import org.mybatis.jpetstore.domain.Address;
+import org.mybatis.jpetstore.domain.Item;
+import org.mybatis.jpetstore.domain.Product;
+import org.mybatis.jpetstore.domain.Profile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -35,7 +38,7 @@ public class AccountRepositoryPersistenceTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedItemWithSpecificItemId() {
+  public void findOne_repositoryPopulator_fetchedAccountWithSpecifiedUsername() {
     // given
     //   repository was populated during the app init
     // when
@@ -44,12 +47,28 @@ public class AccountRepositoryPersistenceTest {
     // then
     assertThat(account, notNullValue());
     assertThat(account.getUsername(), is(username));
+    assertThat(account.getPassword(), is("slurm"));
     assertThat(account.getFirstName(), is("Philip"));
     assertThat(account.getLastName(), is("Fry"));
     assertThat(account.getStatus(), is("OK"));
     assertThat(account.getEmail(), is("philip.fry@planet-express.earth"));
 
     assertThat(EqualsBuilder.reflectionEquals(account.getAddress(), createAddress()), is(true));
+    assertThat(EqualsBuilder.reflectionEquals(account.getProfile(), createProfile()), is(true));
+  }
+
+  @Test
+  public void findByUsernameAndPassword_repositoryPopulator_fetchedAccountWithSpecifiedUsernameAndPassword() {
+    // given
+    //   repository was populated during the app init
+    // when
+    String username = "pfry";
+    String password = "slurm";
+    Account account = accountRepository.findByUsernameAndPassword(username, password);
+    // then
+    assertThat(account, notNullValue());
+    assertThat(account.getUsername(), is(username));
+    assertThat(account.getPassword(), is(password));
   }
 
   private Address createAddress() {
@@ -60,21 +79,18 @@ public class AccountRepositoryPersistenceTest {
         .state("NY")
         .zip("01234")
         .country("Earth")
-        .phone("0123456789").build();
+        .phone("0123456789")
+        .build();
   }
-/*
 
-  @Test
-  public void findByProduct_repositoryPopulator_fetchedItemsWithSpecificProduct() {
-    // given
-    //   repository was populated during the app init
-    // when
-    String productId = "FI-SW-01";
-    Product product = productRepository.findOne(productId);
-    List<Item> items = accountRepository.findByProduct(product);
-    // then
-    assertThat(items.size(), is(2));
-    items.forEach(item -> assertThat(item.getProductId(), is(productId)));
+  private Profile createProfile() {
+    return Profile.builder()
+      .favouriteCategoryId("CATS")
+        .languagePreference("AL2")
+        .listOption(true)
+        .bannerOption(true)
+        .bannerName("<image src=\"../images/banner_cats.gif\">")
+        .build();
   }
-*/
+
 }

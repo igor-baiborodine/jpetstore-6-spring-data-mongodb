@@ -35,7 +35,7 @@ public class ProductRepositoryPersistenceTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedProductWithSpecificProductId() {
+  public void findOne_repositoryPopulator_fetchedProductWithSpecifiedProductId() {
     // given
     //   repository was populated during the app init
     // when
@@ -50,7 +50,7 @@ public class ProductRepositoryPersistenceTest {
   }
 
   @Test
-  public void findByCategoryId_repositoryPopulator_fetchedProductsWithSpecificCategoryId() {
+  public void findByCategoryId_repositoryPopulator_fetchedProductsWithSpecifiedCategoryId() {
     // given
     //   repository was populated during the app init
     // when
