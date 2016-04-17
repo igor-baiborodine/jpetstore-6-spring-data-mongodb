@@ -6,19 +6,14 @@ import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.notNullValue;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mybatis.jpetstore.JPetStoreDemo6SpringBootApplication;
+import org.mybatis.jpetstore.AbstractIntegrationTest;
 import org.mybatis.jpetstore.domain.Category;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * @author Igor Baiborodine
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = JPetStoreDemo6SpringBootApplication.class)
-public class CategoryRepositoryPersistenceTest {
+public class CategoryRepositoryPersistenceTest extends AbstractIntegrationTest {
 
   public static final String CATEGORY_ID = "CATEGORY_ID";
   public static final String NAME = "Dinosaurs";

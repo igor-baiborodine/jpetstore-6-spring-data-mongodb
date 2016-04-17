@@ -6,7 +6,9 @@ import static org.hamcrest.core.IsNull.notNullValue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.jpetstore.AbstractIntegrationTest;
 import org.mybatis.jpetstore.JPetStoreDemo6SpringBootApplication;
+import org.mybatis.jpetstore.domain.Order;
 import org.mybatis.jpetstore.domain.Sequence;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -15,9 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 /**
  * @author Igor Baiborodine
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = JPetStoreDemo6SpringBootApplication.class)
-public class SequenceRepositoryPersistenceTest {
+public class SequenceRepositoryPersistenceTest extends AbstractIntegrationTest {
 
   @Autowired
   private SequenceRepository sequenceRepository;
@@ -37,8 +37,7 @@ public class SequenceRepositoryPersistenceTest {
     // given
     //   repository was populated during the app init
     // when
-    String name = "order";
-    Sequence sequence = sequenceRepository.findOne(name);
+    Sequence sequence = sequenceRepository.findOne(Order.SEQUENCE_NAME);
     // then
     assertThat(sequence, notNullValue());
     assertThat(sequence.getNextId().intValue(), is(1000));

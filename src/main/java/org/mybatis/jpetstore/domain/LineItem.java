@@ -16,6 +16,7 @@
 
 package org.mybatis.jpetstore.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -30,7 +31,7 @@ import java.math.BigDecimal;
  * @author Igor Baiborodine
  */
 @Getter @Setter
-@NoArgsConstructor
+@AllArgsConstructor @NoArgsConstructor
 public class LineItem {
 
   @NonNull  private Integer lineNumber;

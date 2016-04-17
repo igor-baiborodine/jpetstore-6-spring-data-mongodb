@@ -6,6 +6,7 @@ import static org.hamcrest.core.IsNull.notNullValue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.jpetstore.AbstractIntegrationTest;
 import org.mybatis.jpetstore.JPetStoreDemo6SpringBootApplication;
 import org.mybatis.jpetstore.domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,9 +18,7 @@ import java.util.List;
 /**
  * @author Igor Baiborodine
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = JPetStoreDemo6SpringBootApplication.class)
-public class ProductRepositoryPersistenceTest {
+public class ProductRepositoryPersistenceTest extends AbstractIntegrationTest {
 
   @Autowired
   private ProductRepository productRepository;

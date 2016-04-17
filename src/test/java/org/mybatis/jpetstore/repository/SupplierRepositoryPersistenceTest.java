@@ -7,6 +7,7 @@ import static org.hamcrest.core.IsNull.nullValue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mybatis.jpetstore.AbstractIntegrationTest;
 import org.mybatis.jpetstore.JPetStoreDemo6SpringBootApplication;
 import org.mybatis.jpetstore.domain.Address;
 import org.mybatis.jpetstore.domain.Supplier;
@@ -19,9 +20,7 @@ import java.math.BigInteger;
 /**
  * @author Igor Baiborodine
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = JPetStoreDemo6SpringBootApplication.class)
-public class SupplierRepositoryPersistenceTest {
+public class SupplierRepositoryPersistenceTest extends AbstractIntegrationTest {
 
   @Autowired
   private SupplierRepository supplierRepository;

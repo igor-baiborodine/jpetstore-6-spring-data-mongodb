@@ -18,6 +18,7 @@ package org.mybatis.jpetstore.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
@@ -44,6 +45,8 @@ import java.util.List;
 @NoArgsConstructor @AllArgsConstructor
 @Document
 public class Order {
+
+  public static final String SEQUENCE_NAME = "order";
 
   @Id       private BigInteger orderId;
   @NonNull  private String username;
@@ -78,8 +81,8 @@ public class Order {
     });
   }
 
-  @Getter
-  private class PaymentInfo {
+  @Getter @NoArgsConstructor
+  class PaymentInfo {
     private String creditCard = "999 9999 9999 9999";
     private String expiryDate = "12/03";
     private String cardType = "Visa";
