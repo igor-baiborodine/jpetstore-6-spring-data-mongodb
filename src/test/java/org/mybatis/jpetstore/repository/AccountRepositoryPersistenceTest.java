@@ -17,11 +17,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class AccountRepositoryPersistenceTest extends AbstractIntegrationTest {
 
-  @Autowired
-  private AccountRepository accountRepository;
+  @Autowired private AccountRepository accountRepository;
 
   @Test
-  public void count_repositoryPopulator_countedTwoAccounts() {
+  public void count_repositoryPopulated_countedTwoAccounts() {
     // given
     //   repository was populated during the app init
     // when
@@ -31,7 +30,7 @@ public class AccountRepositoryPersistenceTest extends AbstractIntegrationTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedAccountWithSpecifiedUsername() {
+  public void findOne_repositoryPopulated_fetchedAccountWithSpecifiedUsername() {
     // given
     //   repository was populated during the app init
     // when
@@ -51,7 +50,7 @@ public class AccountRepositoryPersistenceTest extends AbstractIntegrationTest {
   }
 
   @Test
-  public void findByUsernameAndPassword_repositoryPopulator_fetchedAccountWithSpecifiedUsernameAndPassword() {
+  public void findByUsernameAndPassword_repositoryPopulated_fetchedAccountWithSpecifiedUsernameAndPassword() {
     // given
     //   repository was populated during the app init
     // when

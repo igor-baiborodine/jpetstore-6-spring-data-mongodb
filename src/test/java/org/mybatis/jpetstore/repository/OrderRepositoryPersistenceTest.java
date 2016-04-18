@@ -24,12 +24,9 @@ public class OrderRepositoryPersistenceTest extends AbstractIntegrationTest {
   private static final String USERNAME = "pfry";
   private static final String ITEM_ID = "EST-1";
 
-  @Autowired
-  private OrderRepository orderRepository;
-  @Autowired
-  private AccountRepository accountRepository;
-  @Autowired
-  private ItemRepository itemRepository;
+  @Autowired private OrderRepository orderRepository;
+  @Autowired private AccountRepository accountRepository;
+  @Autowired private ItemRepository itemRepository;
 
   @Test
   public void save_newOrder_insertedNewOrder() {
@@ -52,7 +49,7 @@ public class OrderRepositoryPersistenceTest extends AbstractIntegrationTest {
   }
 
   @Test
-  public void findByUsername_existingOrder_fetchedOrderForSpecifiedUsername() throws Exception {
+  public void findByUsername_existingOrder_fetchedOrdersForSpecifiedUsername() throws Exception {
     // given
     orderRepository.save(createOrder(1001));
     // when

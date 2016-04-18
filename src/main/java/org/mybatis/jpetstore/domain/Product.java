@@ -27,6 +27,7 @@ import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.TextIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
@@ -40,6 +41,7 @@ public class Product {
 
   @Id       private String productId;
   @NonNull  private String categoryId;
+  @TextIndexed
   @NonNull  private String name;
   @NonNull  private String description;
 

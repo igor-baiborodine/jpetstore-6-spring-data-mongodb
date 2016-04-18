@@ -26,7 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 public class AccountService {
 
-  @Autowired  private AccountRepository accountRepository;
+  @Autowired private AccountRepository accountRepository;
 
   public Account getAccount(String username) {
     return accountRepository.findOne(username);

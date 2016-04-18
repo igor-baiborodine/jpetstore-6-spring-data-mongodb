@@ -23,13 +23,11 @@ import java.util.List;
  */
 public class ItemRepositoryPersistenceTest extends AbstractIntegrationTest {
 
-  @Autowired
-  private ItemRepository itemRepository;
-  @Autowired
-  private ProductRepository productRepository;
+  @Autowired private ItemRepository itemRepository;
+  @Autowired private ProductRepository productRepository;
 
   @Test
-  public void count_repositoryPopulator_counted16Products() {
+  public void count_repositoryPopulated_counted16Products() {
     // given
     //   repository was populated during the app init
     // when
@@ -39,20 +37,20 @@ public class ItemRepositoryPersistenceTest extends AbstractIntegrationTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedItemWithSpecifiedItemId() {
+  public void findOne_repositoryPopulated_fetchedItemWithSpecifiedItemId() {
     // given
     //   repository was populated during the app init
     // when
-    String itemId = "EST-2";
+    String itemId = "EST-4";
     Item item = itemRepository.findOne(itemId);
     // then
     assertThat(item, notNullValue());
     assertThat(item.getItemId(), is(itemId));
-    assertThat(item.getListPrice(), is(new BigDecimal("16.50")));
-    assertThat(item.getUnitCost(), is(new BigDecimal("10.00")));
+    assertThat(item.getListPrice(), is(new BigDecimal("18.50")));
+    assertThat(item.getUnitCost(), is(new BigDecimal("12.00")));
     assertThat(item.getStatus(), is("P"));
     assertThat(item.getQuantity().intValue(), is(1000));
-    assertThat(item.getAttribute1(), is("Small"));
+    assertThat(item.getAttribute1(), is("Spotted"));
 
     assertThat(item.getProduct(), notNullValue());
     Product product = productRepository.findOne(item.getProductId());
@@ -61,7 +59,7 @@ public class ItemRepositoryPersistenceTest extends AbstractIntegrationTest {
   }
 
   @Test
-  public void findByProduct_repositoryPopulator_fetchedItemsWithSpecifiedProduct() {
+  public void findByProduct_repositoryPopulated_fetchedItemsWithSpecifiedProduct() {
     // given
     //   repository was populated during the app init
     // when

@@ -19,11 +19,10 @@ public class CategoryRepositoryPersistenceTest extends AbstractIntegrationTest {
   public static final String NAME = "Dinosaurs";
   public static final String DESCRIPTION = "Lovely and Tender Dinosaurs";
 
-  @Autowired
-  private CategoryRepository categoryRepository;
+  @Autowired private CategoryRepository categoryRepository;
 
   @Test
-  public void count_repositoryPopulator_countedFiveCategories() {
+  public void count_repositoryPopulated_countedFiveCategories() {
     // given
     //   repository was populated during the app init
     // when
@@ -33,7 +32,7 @@ public class CategoryRepositoryPersistenceTest extends AbstractIntegrationTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedCategoryWithSpecifiedCategoryId() {
+  public void findOne_repositoryPopulated_fetchedCategoryWithSpecifiedCategoryId() {
     // given
     //   repository was populated during the app init
     // when

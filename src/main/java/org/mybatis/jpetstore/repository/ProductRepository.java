@@ -1,6 +1,7 @@
 package org.mybatis.jpetstore.repository;
 
 import org.mybatis.jpetstore.domain.Product;
+import org.springframework.data.mongodb.core.query.TextCriteria;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -12,7 +13,6 @@ public interface ProductRepository extends CrudRepository<Product, String> {
 
   List<Product> findByCategoryId(String categoryId);
 
-  // TODO: implement full-text search
-  //List<Product> searchProductList(String keywords);
+  List<Product> findAllBy(TextCriteria criteria);
 
 }

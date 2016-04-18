@@ -16,6 +16,9 @@
 
 package org.mybatis.jpetstore.service;
 
+import com.google.common.annotations.VisibleForTesting;
+import com.google.common.collect.Lists;
+
 import static com.google.common.collect.Lists.newArrayList;
 
 import org.mybatis.jpetstore.domain.Category;
@@ -25,6 +28,10 @@ import org.mybatis.jpetstore.repository.CategoryRepository;
 import org.mybatis.jpetstore.repository.ItemRepository;
 import org.mybatis.jpetstore.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.TextCriteria;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +45,7 @@ public class CatalogService {
   @Autowired private CategoryRepository categoryRepository;
   @Autowired private ItemRepository itemRepository;
   @Autowired private ProductRepository productRepository;
+  @Autowired private MongoOperations mongoOperations;
 
   public List<Category> getCategoryList() {
     return newArrayList(categoryRepository.findAll());
@@ -55,13 +63,25 @@ public class CatalogService {
     return productRepository.findByCategoryId(categoryId);
   }
 
-  // TODO: re-implement with full-text search
-  public List<Product> searchProductList(String keywords) {
-    List<Product> products = new ArrayList<>();
-    for (String keyword : keywords.split("\\s+")) {
-      // TODO: fix me
-      //products.addAll(productRepository.searchProductList("%" + keyword.toLowerCase() + "%"));
+  public List<Product> searchProductList(String... keywords) {
+
+    TextCriteria criteria = TextCriteria.forDefaultLanguage().matchingAny(keywords);
+    List<Product> products = productRepository.findAllBy(criteria);
+
+    if (products.isEmpty()) {
+      products = searchProductsByNameWithRegex(keywords);
     }
+    return products;
+  }
+
+  @VisibleForTesting
+  List<Product> searchProductsByNameWithRegex(String... keywords) {
+
+    List<Product> products = newArrayList();
+    newArrayList(keywords).forEach(keyword -> {
+      Query query = Query.query(Criteria.where("name").regex(".*" + keyword + ".*", "i"));
+      products.addAll(mongoOperations.find(query, Product.class));
+    });
     return products;
   }
 

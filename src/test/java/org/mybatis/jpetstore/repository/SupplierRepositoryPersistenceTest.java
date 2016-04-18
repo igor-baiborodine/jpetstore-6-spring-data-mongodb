@@ -22,11 +22,10 @@ import java.math.BigInteger;
  */
 public class SupplierRepositoryPersistenceTest extends AbstractIntegrationTest {
 
-  @Autowired
-  private SupplierRepository supplierRepository;
+  @Autowired private SupplierRepository supplierRepository;
 
   @Test
-  public void count_repositoryPopulator_countedTwoSuppliers() {
+  public void count_repositoryPopulated_countedTwoSuppliers() {
     // given
     //   repository was populated during the app init
     // when
@@ -36,7 +35,7 @@ public class SupplierRepositoryPersistenceTest extends AbstractIntegrationTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedSupplierWithSpecifiedSupplierId() {
+  public void findOne_repositoryPopulated_fetchedSupplierWithSpecifiedSupplierId() {
     // given
     //   repository was populated during the app init
     // when

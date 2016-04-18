@@ -19,11 +19,10 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 public class SequenceRepositoryPersistenceTest extends AbstractIntegrationTest {
 
-  @Autowired
-  private SequenceRepository sequenceRepository;
+  @Autowired private SequenceRepository sequenceRepository;
 
   @Test
-  public void count_repositoryPopulator_countedOneSequence() {
+  public void count_repositoryPopulated_countedOneSequence() {
     // given
     //   repository was populated during the app init
     // when
@@ -33,7 +32,7 @@ public class SequenceRepositoryPersistenceTest extends AbstractIntegrationTest {
   }
 
   @Test
-  public void findOne_repositoryPopulator_fetchedSequenceWithSpecifiedName() {
+  public void findOne_repositoryPopulated_fetchedSequenceWithSpecifiedName() {
     // given
     //   repository was populated during the app init
     // when
