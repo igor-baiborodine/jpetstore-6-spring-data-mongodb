@@ -5,7 +5,7 @@
 
 ######Technologies used:######
 * [Java SE 8](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)
-* [Lombok](https://projectlombok.org/) (you will need a Lombok plugin for the IDE of you choice)
+* [Lombok](https://projectlombok.org/) (you will need a Lombok plugin for the IDE of your choice)
 * [Spring 4](http://projects.spring.io/spring-framework/#quick-start)
 * [Spring Data MongoDB](http://projects.spring.io/spring-data-mongodb/)
 * [Embedded MongoDB](https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo)
