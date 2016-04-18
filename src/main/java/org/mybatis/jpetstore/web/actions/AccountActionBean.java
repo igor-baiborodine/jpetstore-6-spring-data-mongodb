@@ -56,7 +56,7 @@ public class AccountActionBean extends AbstractActionBean {
   @SpringBean
   private transient CatalogService catalogService;
 
-  private Account account = Account.builder().build();
+  private Account account = new Account();
   private List<Product> myList;
   private boolean authenticated;
 

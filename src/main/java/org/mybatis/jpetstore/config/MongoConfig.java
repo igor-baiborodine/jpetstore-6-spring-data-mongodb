@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.data.mongodb.core.MongoOperations;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
 
 import javax.annotation.PreDestroy;
@@ -25,7 +26,8 @@ import javax.annotation.PreDestroy;
  */
 @Configuration
 @EnableAutoConfiguration
-public class RepositoryConfig {
+@EnableMongoRepositories(basePackages = "org.mybatis.jpetstore.repository")
+public class MongoConfig {
 
   @Autowired
   private MongoOperations operations;

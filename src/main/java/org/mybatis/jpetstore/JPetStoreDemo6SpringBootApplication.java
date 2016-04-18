@@ -6,6 +6,7 @@ import static javax.servlet.DispatcherType.REQUEST;
 
 import net.sourceforge.stripes.controller.StripesFilter;
 
+import org.mybatis.jpetstore.config.MongoConfig;
 import org.mybatis.jpetstore.config.ServiceConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -45,7 +46,7 @@ public class JPetStoreDemo6SpringBootApplication extends SpringBootServletInitia
 
   @Override
   protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-    return application.sources(ServiceConfig.class);
+    return application.sources(ServiceConfig.class, MongoConfig.class);
   }
 
   @Override

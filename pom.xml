@@ -24,11 +24,6 @@
     <project.source.version>1.8</project.source.version>
     <project.target.version>1.8</project.target.version>
 
-    <jetty-plugin.version>9.2.2.v20140723</jetty-plugin.version>
-    <local.server.port>8080</local.server.port>
-    <local.server.path>/</local.server.path>
-    <local.server.stop-port>8099</local.server.stop-port>
-
     <version.slf4j>1.7.5</version.slf4j>
     <querydsl.version>4.0.8</querydsl.version>
     <spring.version>4.2.3.RELEASE</spring.version>
@@ -171,19 +166,9 @@
         </configuration>
       </plugin>
       <plugin>
-        <groupId>org.eclipse.jetty</groupId>
-        <artifactId>jetty-maven-plugin</artifactId>
-        <version>${jetty-plugin.version}</version>
-        <configuration>
-          <webApp>
-            <contextPath>${local.server.path}</contextPath>
-          </webApp>
-          <httpConnector>
-            <port>${local.server.port}</port>
-          </httpConnector>
-          <stopKey>stop-jetty</stopKey>
-          <stopPort>${local.server.stop-port}</stopPort>
-        </configuration>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
       </plugin>
     </plugins>
   </build>

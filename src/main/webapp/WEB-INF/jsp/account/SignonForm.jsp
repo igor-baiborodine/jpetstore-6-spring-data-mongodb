@@ -5,8 +5,8 @@
 	focus="">
 
 	<p>Please enter your username and password.</p>
-	<p>Username:<stripes:text name="username" value="j2ee" /> <br />
-	Password:<stripes:password name="password" value="j2ee" /></p>
+	<p>Username:<stripes:text name="username" value="pfry" /> <br />
+	Password:<stripes:password name="password" value="slurm" /></p>
 	<stripes:submit name="signon" value="Login" />
 
 </stripes:form> Need a user name and password? <stripes:link
