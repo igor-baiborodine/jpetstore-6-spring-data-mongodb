@@ -120,8 +120,7 @@ public class AccountActionBean extends AbstractActionBean {
   public Resolution newAccount() {
     accountService.insertAccount(account);
     account = accountService.getAccount(account.getUsername());
-    // TODO: fix me
-    //myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
+    myList = catalogService.getProductListByCategory(account.getProfile().getFavouriteCategoryId());
     authenticated = true;
     return new RedirectResolution(CatalogActionBean.class);
   }
@@ -133,8 +132,7 @@ public class AccountActionBean extends AbstractActionBean {
   public Resolution editAccount() {
     accountService.updateAccount(account);
     account = accountService.getAccount(account.getUsername());
-    // TODO: fix me
-    // myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
+    myList = catalogService.getProductListByCategory(account.getProfile().getFavouriteCategoryId());
     return new RedirectResolution(CatalogActionBean.class);
   }
   
@@ -154,8 +152,7 @@ public class AccountActionBean extends AbstractActionBean {
       return new ForwardResolution(SIGNON);
     } else {
       account.setPassword(null);
-      // TODO: fix me
-      //myList = catalogService.getProductListByCategory(account.getFavouriteCategoryId());
+      myList = catalogService.getProductListByCategory(account.getProfile().getFavouriteCategoryId());
       authenticated = true;
       HttpSession s = context.getRequest().getSession();
       // this bean is already registered as /actions/Account.action
