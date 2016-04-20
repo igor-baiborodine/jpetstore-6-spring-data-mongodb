@@ -6,6 +6,7 @@
 ######Technologies used:######
 * [Java SE 8](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)
 * [Lombok](https://projectlombok.org/) (you will need a Lombok plugin for the IDE of your choice)
+* [Stripes](https://stripesframework.atlassian.net/wiki/display/STRIPES/Home)
 * [Spring 4](http://projects.spring.io/spring-framework/#quick-start)
 * [Spring Boot](http://projects.spring.io/spring-boot/)
 * [Spring Data MongoDB](http://projects.spring.io/spring-data-mongodb/)
