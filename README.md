@@ -11,6 +11,7 @@
 * [Spring Boot](http://projects.spring.io/spring-boot/)
 * [Spring Data MongoDB](http://projects.spring.io/spring-data-mongodb/)
 * [Embedded MongoDB](https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo)
+* [Jetty](http://www.eclipse.org/jetty/)
 * [Maven 3](http://maven.apache.org/)
 * [JUnit 4](http://junit.org/)
 * [IntelliJ IDEA](https://www.jetbrains.com/idea/)
