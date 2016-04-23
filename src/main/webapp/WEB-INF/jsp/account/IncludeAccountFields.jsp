@@ -15,31 +15,31 @@
 	</tr>
 	<tr>
 		<td>Phone:</td>
-		<td><stripes:text name="account.phone" /></td>
+		<td><stripes:text name="account.address.phone" /></td>
 	</tr>
 	<tr>
 		<td>Address 1:</td>
-		<td><stripes:text size="40" name="account.address1" /></td>
+		<td><stripes:text size="40" name="account.address.address1" /></td>
 	</tr>
 	<tr>
 		<td>Address 2:</td>
-		<td><stripes:text size="40" name="account.address2" /></td>
+		<td><stripes:text size="40" name="account.address.address2" /></td>
 	</tr>
 	<tr>
 		<td>City:</td>
-		<td><stripes:text name="account.city" /></td>
+		<td><stripes:text name="account.address.city" /></td>
 	</tr>
 	<tr>
 		<td>State:</td>
-		<td><stripes:text size="4" name="account.state" /></td>
+		<td><stripes:text size="4" name="account.address.state" /></td>
 	</tr>
 	<tr>
 		<td>Zip:</td>
-		<td><stripes:text size="10" name="account.zip" /></td>
+		<td><stripes:text size="10" name="account.address.zip" /></td>
 	</tr>
 	<tr>
-		<td>Country:</td>
-		<td><stripes:text size="15" name="account.country" /></td>
+		<td>Planet:</td>
+		<td><stripes:text size="15" name="account.address.country" /></td>
 	</tr>
 </table>
 
@@ -48,23 +48,23 @@
 <table>
 	<tr>
 		<td>Language Preference:</td>
-		<td><stripes:select name="account.languagePreference">
+		<td><stripes:select name="account.profile.languagePreference">
 			<stripes:options-collection collection="${actionBean.languages}" />
 		</stripes:select></td>
 	</tr>
 	<tr>
 		<td>Favourite Category:</td>
-		<td><stripes:select name="account.favouriteCategoryId">
+		<td><stripes:select name="account.profile.favouriteCategoryId">
 			<stripes:options-collection collection="${actionBean.categories}" />
 		</stripes:select></td>
 	</tr>
 	<tr>
 		<td>Enable MyList</td>
-		<td><stripes:checkbox name="account.listOption" /></td>
+		<td><stripes:checkbox name="account.profile.listOption" /></td>
 	</tr>
 	<tr>
 		<td>Enable MyBanner</td>
-		<td><stripes:checkbox name="account.bannerOption" /></td>
+		<td><stripes:checkbox name="account.profile.bannerOption" /></td>
 	</tr>
 
 </table>

@@ -16,16 +16,6 @@
 
 package org.mybatis.jpetstore.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.Setter;
-
-import static com.google.common.collect.Lists.newArrayList;
-
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
 
@@ -36,6 +26,15 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.Setter;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 /**
  * @author Eduardo Macarron
@@ -56,8 +55,14 @@ public class Order {
   @NonNull  private String locale;
   @NonNull  private String status;
 
-  @NonNull  private Address shippingAddress;
+  @NonNull  private String billingFirstName;
+  @NonNull  private String billingLastName;
   @NonNull  private Address billingAddress;
+
+  @NonNull  private String shippingFirstName;
+  @NonNull  private String shippingLastName;
+  @NonNull  private Address shippingAddress;
+
   @NonNull  private PaymentInfo paymentInfo;
             private String courier;
             private List<LineItem> lineItems = newArrayList();
@@ -66,8 +71,14 @@ public class Order {
 
     username = account.getUsername();
     orderDate = new Date();
-    shippingAddress = account.getAddress();
-    billingAddress = account.getAddress();
+
+    shippingFirstName = account.getFirstName();
+    shippingLastName = account.getLastName();
+    shippingAddress = Address.copy(account.getAddress());
+
+    billingFirstName = account.getFirstName();
+    billingLastName = account.getLastName();
+    billingAddress = Address.copy(account.getAddress());
     paymentInfo = new PaymentInfo();
 
     totalPrice = cart.getSubTotal();
@@ -81,11 +92,16 @@ public class Order {
     });
   }
 
-  @Getter @NoArgsConstructor
-  class PaymentInfo {
-    private String creditCard = "999 9999 9999 9999";
-    private String expiryDate = "12/03";
-    private String cardType = "Visa";
+  public String getCreditCard() {
+    return paymentInfo != null ? paymentInfo.getCreditCard() : null;
+  }
+
+  public String getExpiryDate() {
+    return paymentInfo != null ? paymentInfo.getExpiryDate() : null;
+  }
+
+  public String getCardType() {
+    return paymentInfo != null ? paymentInfo.getCardType() : null;
   }
 
   @Override
@@ -115,4 +131,11 @@ public class Order {
         .toString();
   }
 
+}
+
+@Getter @NoArgsConstructor
+class PaymentInfo {
+  private String creditCard = "999 9999 9999 9999";
+  private String expiryDate = "12/03";
+  private String cardType = "Visa";
 }

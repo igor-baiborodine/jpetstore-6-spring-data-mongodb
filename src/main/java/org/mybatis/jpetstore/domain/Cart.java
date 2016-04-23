@@ -16,16 +16,16 @@
 
 package org.mybatis.jpetstore.domain;
 
-import lombok.Getter;
-
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-
 import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
+import lombok.Getter;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Maps.newHashMap;
 
 /**
  * @author Eduardo Macarron
@@ -91,6 +91,18 @@ public class Cart {
     });
 
     return subTotal[0];
+  }
+
+  public int getNumberOfItems() {
+    return itemList.size();
+  }
+
+  public Iterator<CartItem> getCartItems() {
+    return itemList.iterator();
+  }
+
+  public List<CartItem> getCartItemList() {
+    return itemList;
   }
 
 }

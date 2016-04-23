@@ -16,18 +16,18 @@
 
 package org.mybatis.jpetstore.domain;
 
+import com.google.common.base.MoreObjects;
+import com.google.common.base.Objects;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-
-import com.google.common.base.MoreObjects;
-import com.google.common.base.Objects;
-
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author Igor Baiborodine
@@ -38,13 +38,21 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Account {
 
   @Id       private String username;
-  @NonNull  private String password;
+            private String password;
   @NonNull  private String email;
   @NonNull  private String firstName;
   @NonNull  private String lastName;
   @NonNull  private String status;
   @NonNull  private Address address;
   @NonNull  private Profile profile;
+
+  public boolean isBannerOption() {
+    return profile != null && profile.isBannerOption();
+  }
+
+  public String getBannerName() {
+    return profile != null ? profile.getBannerName() : null;
+  }
 
   @Override
   public boolean equals(Object o) {

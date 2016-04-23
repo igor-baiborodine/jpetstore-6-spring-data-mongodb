@@ -172,7 +172,7 @@ public class AccountActionBean extends AbstractActionBean {
   }
 
   public void clear() {
-    account = Account.builder().build();
+    account = new Account();
     myList = null;
     authenticated = false;
   }

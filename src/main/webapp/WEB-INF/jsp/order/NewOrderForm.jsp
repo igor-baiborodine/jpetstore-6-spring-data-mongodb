@@ -29,35 +29,35 @@
 
 		<tr>
 			<td>First name:</td>
-			<td><stripes:text name="order.billToFirstName" /></td>
+			<td><stripes:text name="order.billingFirstName" /></td>
 		</tr>
 		<tr>
 			<td>Last name:</td>
-			<td><stripes:text name="order.billToLastName" /></td>
+			<td><stripes:text name="order.billingLastName" /></td>
 		</tr>
 		<tr>
 			<td>Address 1:</td>
-			<td><stripes:text size="40" name="order.billAddress1" /></td>
+			<td><stripes:text size="40" name="order.billingAddress.address1" /></td>
 		</tr>
 		<tr>
 			<td>Address 2:</td>
-			<td><stripes:text size="40" name="order.billAddress2" /></td>
+			<td><stripes:text size="40" name="order.billingAddress.address2" /></td>
 		</tr>
 		<tr>
 			<td>City:</td>
-			<td><stripes:text name="order.billCity" /></td>
+			<td><stripes:text name="order.billingAddress.city" /></td>
 		</tr>
 		<tr>
 			<td>State:</td>
-			<td><stripes:text size="4" name="order.billState" /></td>
+			<td><stripes:text size="4" name="order.billingAddress.state" /></td>
 		</tr>
 		<tr>
 			<td>Zip:</td>
-			<td><stripes:text size="10" name="order.billZip" /></td>
+			<td><stripes:text size="10" name="order.billingAddress.zip" /></td>
 		</tr>
 		<tr>
-			<td>Country:</td>
-			<td><stripes:text size="15" name="order.billCountry" /></td>
+			<td>Planet:</td>
+			<td><stripes:text size="15" name="order.billingAddress.country" /></td>
 		</tr>
 
 		<tr>

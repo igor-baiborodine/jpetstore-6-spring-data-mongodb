@@ -1,13 +1,15 @@
 package org.mybatis.jpetstore.domain;
 
+import com.google.common.base.MoreObjects;
+
+import org.springframework.beans.BeanUtils;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.Setter;
-
-import com.google.common.base.MoreObjects;
 
 /**
  * @author Igor Baiborodine
@@ -35,6 +37,12 @@ public class Address {
         .add("country", country)
         .add("phone", phone)
         .toString();
+  }
+
+  public static Address copy(Address address) {
+    Address copy = new Address();
+    BeanUtils.copyProperties(address, copy);
+    return copy;
   }
 
 }

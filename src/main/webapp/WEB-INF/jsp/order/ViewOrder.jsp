@@ -33,70 +33,70 @@
 	</tr>
 	<tr>
 		<td>First name:</td>
-		<td><c:out value="${actionBean.order.billToFirstName}" /></td>
+		<td><c:out value="${actionBean.order.billingFirstName}" /></td>
 	</tr>
 	<tr>
 		<td>Last name:</td>
-		<td><c:out value="${actionBean.order.billToLastName}" /></td>
+		<td><c:out value="${actionBean.order.billingLastName}" /></td>
 	</tr>
 	<tr>
 		<td>Address 1:</td>
-		<td><c:out value="${actionBean.order.billAddress1}" /></td>
+		<td><c:out value="${actionBean.order.billingAddress.address1}" /></td>
 	</tr>
 	<tr>
 		<td>Address 2:</td>
-		<td><c:out value="${actionBean.order.billAddress2}" /></td>
+		<td><c:out value="${actionBean.order.billingAddress.address2}" /></td>
 	</tr>
 	<tr>
 		<td>City:</td>
-		<td><c:out value="${actionBean.order.billCity}" /></td>
+		<td><c:out value="${actionBean.order.billingAddress.city}" /></td>
 	</tr>
 	<tr>
 		<td>State:</td>
-		<td><c:out value="${actionBean.order.billState}" /></td>
+		<td><c:out value="${actionBean.order.billingAddress.state}" /></td>
 	</tr>
 	<tr>
 		<td>Zip:</td>
-		<td><c:out value="${actionBean.order.billZip}" /></td>
+		<td><c:out value="${actionBean.order.billingAddress.zip}" /></td>
 	</tr>
 	<tr>
-		<td>Country:</td>
-		<td><c:out value="${actionBean.order.billCountry}" /></td>
+		<td>Planet:</td>
+		<td><c:out value="${actionBean.order.billingAddress.country}" /></td>
 	</tr>
 	<tr>
 		<th colspan="2">Shipping Address</th>
 	</tr>
 	<tr>
 		<td>First name:</td>
-		<td><c:out value="${actionBean.order.shipToFirstName}" /></td>
+		<td><c:out value="${actionBean.order.shippingFirstName}" /></td>
 	</tr>
 	<tr>
 		<td>Last name:</td>
-		<td><c:out value="${actionBean.order.shipToLastName}" /></td>
+		<td><c:out value="${actionBean.order.shippingLastName}" /></td>
 	</tr>
 	<tr>
 		<td>Address 1:</td>
-		<td><c:out value="${actionBean.order.shipAddress1}" /></td>
+		<td><c:out value="${actionBean.order.shippingAddress.address1}" /></td>
 	</tr>
 	<tr>
 		<td>Address 2:</td>
-		<td><c:out value="${actionBean.order.shipAddress2}" /></td>
+		<td><c:out value="${actionBean.order.shippingAddress.address2}" /></td>
 	</tr>
 	<tr>
 		<td>City:</td>
-		<td><c:out value="${actionBean.order.shipCity}" /></td>
+		<td><c:out value="${actionBean.order.shippingAddress.city}" /></td>
 	</tr>
 	<tr>
 		<td>State:</td>
-		<td><c:out value="${actionBean.order.shipState}" /></td>
+		<td><c:out value="${actionBean.order.shippingAddress.state}" /></td>
 	</tr>
 	<tr>
 		<td>Zip:</td>
-		<td><c:out value="${actionBean.order.shipZip}" /></td>
+		<td><c:out value="${actionBean.order.shippingAddress.zip}" /></td>
 	</tr>
 	<tr>
-		<td>Country:</td>
-		<td><c:out value="${actionBean.order.shipCountry}" /></td>
+		<td>Planet:</td>
+		<td><c:out value="${actionBean.order.shippingAddress.country}" /></td>
 	</tr>
 	<tr>
 		<td>Courier:</td>
