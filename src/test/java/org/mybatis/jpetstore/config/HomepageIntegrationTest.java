@@ -21,9 +21,8 @@ public class HomepageIntegrationTest extends AbstractIntegrationTest {
   private int port;
 
   @Test
-  public void testHome() throws Exception {
-    ResponseEntity<String> entity =
-        new TestRestTemplate().getForEntity("http://localhost:" + port, String.class);
+  public void homepage_indexHtml_retrievedWithEmptyContextPath() throws Exception {
+    ResponseEntity<String> entity = new TestRestTemplate().getForEntity("http://localhost:" + port, String.class);
     assertThat(entity.getStatusCode(), is(HttpStatus.OK));
     assertThat(entity.getBody().contains("<h2>Welcome to JPetStore 6 MongoDB"), is(true));
   }
