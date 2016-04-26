@@ -13,10 +13,10 @@ git clone https://github.com/igor-baiborodine/jpetstore-6-spring-data-mongodb.gi
 cd jpetstore-6-spring-data-mongodb
 
 # in embedded mode
-clean package jetty:run -Dspring.profiles.active=embedded -DskipTests
+mvn clean package jetty:run -Dspring.profiles.active=embedded -DskipTests
 
 # in standalone mode if you have your MongoDB server installed
-clean package jetty:run -Dspring.profiles.active=standalone -DskipTests
+mvn clean package jetty:run -Dspring.profiles.active=standalone -DskipTests
 
 # Access in your browser at http://localhost:8080
 ```
