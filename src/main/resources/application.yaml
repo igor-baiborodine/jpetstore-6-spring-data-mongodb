@@ -1,0 +1,17 @@
+spring.profiles.active: embedded
+
+server:
+  context-path: /
+---
+
+spring:
+  profiles: embedded
+  data.mongodb.port: 0
+---
+
+spring:
+  profiles: standalone
+  data.mongodb.host: localhost
+  data.mongodb.port: 27017
+  data.mongodb.database: jpetstore
+  autoconfigure.exclude: org.springframework.boot.autoconfigure.mongo.embedded.EmbeddedMongoAutoConfiguration

@@ -83,7 +83,7 @@ public class AccountActionBean extends AbstractActionBean {
     return account.getUsername();
   }
 
-  @Validate(required=true, on={"signon", "newAccount", "editAccount"})
+  @Validate(required=true, on={"signon", "newAccount"})
   public void setUsername(String username) {
     account.setUsername(username);
   }
@@ -111,6 +111,14 @@ public class AccountActionBean extends AbstractActionBean {
 
   public List<String> getCategories() {
     return CATEGORY_LIST;
+  }
+
+  public boolean isBannerOption() {
+    return getAccount().isBannerOption();
+  }
+
+  public String getBannerName() {
+    return getAccount().getBannerName();
   }
 
   public Resolution newAccountForm() {
@@ -151,11 +159,12 @@ public class AccountActionBean extends AbstractActionBean {
       clear();
       return new ForwardResolution(SIGNON);
     } else {
-      account.setPassword(null);
+      account.setPassword("");
       myList = catalogService.getProductListByCategory(account.getProfile().getFavouriteCategoryId());
       authenticated = true;
       HttpSession s = context.getRequest().getSession();
       // this bean is already registered as /actions/Account.action
+
       s.setAttribute("accountBean", this);
       return new RedirectResolution(CatalogActionBean.class);
     }

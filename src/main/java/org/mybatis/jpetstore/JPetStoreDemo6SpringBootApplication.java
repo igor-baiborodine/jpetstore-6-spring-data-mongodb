@@ -67,5 +67,4 @@ public class JPetStoreDemo6SpringBootApplication extends SpringBootServletInitia
     super.onStartup(servletContext);
   }
 
-
 }

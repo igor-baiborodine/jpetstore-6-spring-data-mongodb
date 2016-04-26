@@ -38,7 +38,7 @@ import lombok.Setter;
 public class Account {
 
   @Id       private String username;
-            private String password;
+  @NonNull  private String password;
   @NonNull  private String email;
   @NonNull  private String firstName;
   @NonNull  private String lastName;
