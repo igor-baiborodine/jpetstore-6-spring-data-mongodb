@@ -17,9 +17,6 @@
 package org.mybatis.jpetstore.service;
 
 import com.google.common.annotations.VisibleForTesting;
-import com.google.common.collect.Lists;
-
-import static com.google.common.collect.Lists.newArrayList;
 
 import org.mybatis.jpetstore.domain.Category;
 import org.mybatis.jpetstore.domain.Item;
@@ -29,12 +26,11 @@ import org.mybatis.jpetstore.repository.ItemRepository;
 import org.mybatis.jpetstore.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.TextCriteria;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
 
 /**
  * @author Eduardo Macarron
@@ -78,10 +74,9 @@ public class CatalogService {
   List<Product> searchProductsByNameWithRegex(String... keywords) {
 
     List<Product> products = newArrayList();
-    newArrayList(keywords).forEach(keyword -> {
-      Query query = Query.query(Criteria.where("name").regex(".*" + keyword + ".*", "i"));
-      products.addAll(mongoOperations.find(query, Product.class));
-    });
+    newArrayList(keywords).forEach(keyword ->
+      products.addAll(productRepository.findByNameWithRegex(".*" + keyword + ".*"))
+    );
     return products;
   }
 
