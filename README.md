@@ -2,7 +2,7 @@ jpetstore-6-spring-data-mongodb
 -------------------------------
  [![Build Status](https://travis-ci.org/igor-baiborodine/jpetstore-6-spring-data-mongodb.svg?branch=master)](https://travis-ci.org/igor-baiborodine/jpetstore-6-spring-data-mongodb)
  
-#####This project is an exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/MongoDB using Spring Data MongoDB.
+#####This project is an exercise to port the original [JPetStore-6](https://github.com/mybatis/jpetstore-6) from RDBMS/MyBatis to NoSQL/MongoDB using Spring Data MongoDB.
 
 ######Run with Maven:
 ```bash
@@ -10,7 +10,7 @@ git clone https://github.com/igor-baiborodine/jpetstore-6-spring-data-mongodb.gi
 cd jpetstore-6-spring-data-mongodb
 
 # In embedded mode
-mvn clean package jetty:run -Dspring.profiles.active=embedded -DskipTests
+mvn clean package jetty:run -DskipTests
 
 # In standalone mode if you have your MongoDB server installed
 mvn clean package jetty:run -Dspring.profiles.active=standalone -DskipTests
