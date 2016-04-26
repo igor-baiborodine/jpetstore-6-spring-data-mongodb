@@ -1,7 +1,25 @@
-[IN PROGRESS] [![Build Status](https://travis-ci.org/igor-baiborodine/jpetstore-6-spring-data-mongodb.svg?branch=master)](https://travis-ci.org/igor-baiborodine/jpetstore-6-spring-data-mongodb) jpetstore-6-spring-data-mongodb
----------------------------
+jpetstore-6-spring-data-mongodb [![Build Status](https://travis-ci.org/igor-baiborodine/jpetstore-6-spring-data-mongodb.svg?branch=master)](https://travis-ci.org/igor-baiborodine/jpetstore-6-spring-data-mongodb)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #####This project is an exercise to port the original JPetStore-6 from RDBMS/MyBatis to NoSQL/MongoDB using Spring Data MongoDB.#####
+
+###### Deployment on the OpenShift PaaS: coming soon...
+
+NOTE: Since an in-memory database is used, all accounts and orders data will be lost whenever the application is re-started or re-deployed.
+
+######Run with Maven:
+```bash
+git clone https://github.com/igor-baiborodine/jpetstore-6-spring-data-mongodb.git
+cd jpetstore-6-spring-data-mongodb
+
+# in embedded mode
+clean package jetty:run -Dspring.profiles.active=embedded -DskipTests
+
+# in standalone mode if you have your MongoDB server installed
+clean package jetty:run -Dspring.profiles.active=standalone -DskipTests
+
+# Access in your browser at http://localhost:8080
+```
 
 ######Technologies used:######
 * [Java SE 8](http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html)
